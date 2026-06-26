@@ -1,0 +1,237 @@
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body, .wrap { background: white; font-family: Arial, sans-serif; color: black; }
+  .wrap { padding: 18px; max-width: 680px; }
+
+  .site-title { font-size: 28px; font-weight: bold; margin-bottom: 2px; }
+  .site-title span { color: navy; }
+  .under-title { font-size: 12px; color: gray; margin-bottom: 14px; }
+
+  hr { border: none; border-top: 1px solid black; margin: 14px 0; }
+  hr.double { border-top: 3px double black; }
+
+  .nav { font-size: 13px; margin-bottom: 18px; }
+  .nav a { color: blue; margin-right: 10px; text-decoration: underline; cursor: pointer; }
+  .nav a:hover { color: purple; }
+
+  .marquee-wrap { background: yellow; border: 1px solid black; padding: 4px 0; margin: 14px 0; overflow: hidden; }
+  .marquee-inner { display: inline-block; white-space: nowrap; font-size: 12px; font-family: 'Courier New', monospace; letter-spacing: 0.08em; }
+
+  .palantir-section { background: #000; padding: 18px; margin: 0 -18px; font-family: 'Courier New', monospace; color: #00ff41; }
+  .palantir-section h2 { font-family: 'Courier New', monospace; font-size: 13px; font-weight: bold; text-decoration: none; color: #00ff41; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; border-bottom: 1px solid #00ff41; padding-bottom: 6px; }
+  .palantir-section p { font-size: 12px; color: #00cc33; line-height: 1.6; margin-bottom: 10px; font-family: 'Courier New', monospace; }
+  .pal-item { border: 1px solid #00ff41; padding: 12px; margin-bottom: 14px; }
+  .pal-item .label { font-size: 10px; text-transform: uppercase; color: #007a1f; margin-bottom: 4px; letter-spacing: 0.1em; }
+  .pal-item h3 { font-size: 13px; font-weight: bold; color: #00ff41; margin-bottom: 6px; font-family: 'Courier New', monospace; text-transform: uppercase; letter-spacing: 0.06em; }
+  .pal-img { background: #0a0a0a; border: 1px dashed #00ff41; height: 100px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #007a1f; margin-bottom: 8px; font-style: italic; font-family: 'Courier New', monospace; }
+  .pal-toggle { font-size: 12px; color: #00ff41; text-decoration: underline; cursor: pointer; background: none; border: none; padding: 0; font-family: 'Courier New', monospace; }
+  .pal-toggle:hover { color: #fff; }
+  .pal-expanded { display: none; border-top: 1px dashed #00ff41; margin-top: 10px; padding-top: 10px; }
+  .pal-expanded.open { display: block; }
+  .pal-expanded p { color: #00cc33; }
+  .pal-copy { background: #0a0a0a; border-left: 3px solid #00ff41; padding: 8px 10px; font-size: 12px; font-style: italic; color: #00ff41; line-height: 1.6; margin: 8px 0; font-family: 'Courier New', monospace; }
+  .pal-cursor { animation: blink 1s step-start infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .comedy-box { border: 2px solid black; padding: 12px; margin-bottom: 14px; background: #fffde7; }
+  .comedy-box h3 { font-size: 14px; font-weight: bold; margin-bottom: 6px; }
+  .comedy-box p { font-size: 13px; line-height: 1.6; margin-bottom: 6px; }
+
+  .parody-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+  .parody-cell { aspect-ratio: 2/3; background: #eee; border: 1px dashed #aaa; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 10px; color: #aaa; text-align: center; font-style: italic; padding: 6px; gap: 4px; }
+  .parody-caption { font-size: 11px; color: gray; text-align: center; margin-top: 4px; font-style: italic; }
+
+  .collage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 8px; }
+  .collage-cell { aspect-ratio: 1; background: #eee; border: 1px dashed #aaa; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #aaa; text-align: center; font-style: italic; padding: 6px; }
+
+  .about-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 14px; }
+  .about-table td { padding: 4px 8px; border: 1px solid #ccc; vertical-align: top; }
+  .about-table td:first-child { font-weight: bold; width: 38%; background: #f0f0f0; }
+
+  .copy-sample { background: #f5f5f5; border-left: 3px solid black; padding: 8px 10px; font-size: 12px; font-style: italic; line-height: 1.6; margin: 8px 0; }
+  .footer-txt { font-size: 11px; color: gray; margin-top: 14px; text-align: center; }
+  .new-gif { color: red; font-size: 11px; font-weight: bold; margin-left: 6px; }
+  .email-link { color: blue; font-size: 13px; }
+  .section { margin-bottom: 22px; }
+  h2 { font-size: 17px; font-weight: bold; margin-bottom: 8px; text-decoration: underline; }
+  p { font-size: 13px; line-height: 1.6; margin-bottom: 10px; }
+</style>
+
+<div class="wrap">
+  <h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">George Murphy creative portfolio</h2>
+
+  <div class="site-title"><span>George Murphy</span> — portfolio</div>
+  <div class="under-title">last updated: june 2026 &nbsp;|&nbsp; best viewed in 800x600 &nbsp;|&nbsp; <span style="color:red;">NEW:</span> collages added</div>
+
+  <div class="nav">
+    <a onclick="document.getElementById('work').scrollIntoView()">my work</a>
+    <a onclick="document.getElementById('comedy').scrollIntoView()">comedy stuff</a>
+    <a onclick="document.getElementById('collages').scrollIntoView()">collages</a>
+    <a onclick="document.getElementById('about').scrollIntoView()">about me</a>
+    <a onclick="document.getElementById('contact').scrollIntoView()">contact</a>
+  </div>
+
+  <div class="marquee-wrap">
+    <div class="marquee-inner" id="noise-bar"></div>
+  </div>
+
+  <hr class="double">
+
+  <div class="section" style="margin-bottom:0;">
+    <p><strong>My experience is unique. Palantir, comedy, and collages. No for real I'm being serious. Like actually.</strong></p>
+    <p style="font-size:12px;color:gray;">Almost 2 years down at Palantir. The stuff I make there is a step away from what I'm used to, but I still have pride in my work. Check it out below.</p>
+  </div>
+
+  <hr class="double">
+
+  <div class="palantir-section" id="work">
+    <h2>&gt; PALANTIR_TECHNOLOGIES // WORK_LOG &nbsp;<span class="pal-cursor">_</span></h2>
+    <p>&gt; What I appreciate about Palantir's brand voice is the unapologetic nature of it. They say what they mean. And they mean it.</p>
+    <p>&gt; Basically my job is to push our voice as far from Accenture, AWS, and McKinsey as possible. I enjoy dunking on stupid corporations.</p>
+
+    <div class="pal-item">
+      <div class="label">&gt; ASSET_TYPE: OUT-OF-HOME / CAMPAIGN</div>
+      <h3>// Billboard Campaign</h3>
+<img src="billboard1.jpg" style="width:100%;height:auto;display:block;margin-bottom:4px;border:1px solid #00ff41;">
+<img src="billboard2.jpg" style="width:100%;height:auto;display:block;margin-bottom:8px;border:1px solid #00ff41;">      <p>&gt; wrote copy and concepts for palantir brand billboards. directive: find the PLTR point of view. no tech jargon. make something that respects the reader.</p>
+      <button class="pal-toggle" onclick="palTog(this)">&gt; EXPAND_RECORD</button>
+      <div class="pal-expanded">
+        <div class="pal-copy">[ paste billboard copy here ]</div>
+      </div>
+    </div>
+
+    <div class="pal-item">
+      <div class="label">&gt; ASSET_TYPE: PRINT / EVENT</div>
+      <h3>// Poster Design — Army v Navy Game</h3>
+<img src="armynavy.png" style="width:70%;height:auto;display:block;margin-bottom:8px;border:1px solid #00ff41;">
+      <p>&gt; I think this is pretty sick, right? I led design and copy for this one. It was in a pamphlet given to guests at the Army v Navy game.</p>
+      <button class="pal-toggle" onclick="palTog(this)">&gt; EXPAND_RECORD</button>
+      <div class="pal-expanded">
+        <div class="pal-copy">[ paste copy or process notes here ]</div>
+      </div>
+    </div>
+
+    <div class="pal-item">
+      <div class="label">&gt; ASSET_TYPE: RECRUITMENT / EDITORIAL</div>
+      <h3>// Palantir Recruitment Booklet</h3>
+<a href="Booklet.pdf" target="_blank" style="display:inline-block; margin-bottom:8px; font-family:'Courier New',monospace; font-size:12px; color:#00ff41; border:1px solid #00ff41; padding:8px 14px; text-decoration:none;">&gt; OPEN_DOCUMENT: Palantir_Commercial_Careers_Booklet.pdf</a>
+      <p>&gt; Recruiting wanted a booklet to hand to potential hires — I led the copy and directed design on this one.</p>
+      <button class="pal-toggle" onclick="palTog(this)">&gt; EXPAND_RECORD</button>
+      <div class="pal-expanded">
+        <div class="pal-copy">[ paste copy or process notes here ]</div>
+      </div>
+    </div>
+
+    <p>&gt; END_OF_FILE &nbsp;// additional work available on request &nbsp;<span class="pal-cursor">_</span></p>
+  </div>
+
+  <hr class="double">
+
+  <div class="section" id="comedy">
+    <h2>comedy stuff</h2>
+    <p>I love comedy so much. Yeah call me a dork but I really enjoy improv comedy. You can learn so much about life, others, listening, ego, and your deeply held perspectives by doing improv comedy in front of people that you don't know.</p>
+
+    <div class="comedy-box">
+      <h3>Two Chairs Theatre Company</h3>
+      <p>co-founded a theater company in chicago. chicago reader called it best new theater company in 2023. fun times.</p>
+    </div>
+    <div class="comedy-box">
+      <h3>Second City Training Center</h3>
+      <p>trained at second city. the discipline of being funny under a constraint is the same discipline as writing good copy under a brief.</p>
+    </div>
+    <div class="comedy-box">
+      <h3>Radio DePaul — General Manager</h3>
+      <p>ran a college radio station. wrote programming, managed people, and won the Intercollegiate Broadcasting Award for best comedy program in 2023. it's an IBS award lol.</p>
+    </div>
+
+    <div class="comedy-box">
+      <h3>Parody Posters</h3>
+      <p>i make parody posters. here are some of them.</p>
+      <div class="parody-grid">
+        <div><div class="parody-cell">drop image<br>(parody 1)</div><div class="parody-caption">[ title / caption ]</div></div>
+        <div><div class="parody-cell">drop image<br>(parody 2)</div><div class="parody-caption">[ title / caption ]</div></div>
+        <div><div class="parody-cell">drop image<br>(parody 3)</div><div class="parody-caption">[ title / caption ]</div></div>
+        <div><div class="parody-cell">drop image<br>(parody 4)</div><div class="parody-caption">[ title / caption ]</div></div>
+        <div><div class="parody-cell">drop image<br>(parody 5)</div><div class="parody-caption">[ title / caption ]</div></div>
+        <div><div class="parody-cell">drop image<br>(parody 6)</div><div class="parody-caption">[ title / caption ]</div></div>
+      </div>
+      <p style="font-size:12px;color:gray;margin-top:10px;">[ add links to other comedy writing / sketches / scripts here ]</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section" id="collages">
+    <h2>collages <span class="new-gif">NEW!!</span></h2>
+    <p>I express myself with collages. made from thrifted books and found print materials. made entirely for personal reasons.</p>
+    <div class="collage-grid">
+      <div class="collage-cell">drop image here<br>(collage 1)</div>
+      <div class="collage-cell">drop image here<br>(collage 2)</div>
+      <div class="collage-cell">drop image here<br>(collage 3)</div>
+      <div class="collage-cell">drop image here<br>(collage 4)</div>
+      <div class="collage-cell">drop image here<br>(collage 5)</div>
+      <div class="collage-cell">drop image here<br>(collage 6)</div>
+    </div>
+    <p style="font-size:12px;color:gray;">If I could make a living making these, we wouldn't be in contact right now.</p>
+  </div>
+
+  <hr>
+
+  <div class="section" id="about">
+    <h2>about me</h2>
+    <table class="about-table">
+      <tr><td>name</td><td>george murphy</td></tr>
+      <tr><td>location</td><td>new york city</td></tr>
+      <tr><td>current job</td><td>creative content strategist, palantir technologies</td></tr>
+      <tr><td>background</td><td>philosophy degree. comedy training. theater. radio.</td></tr>
+      <tr><td>skills</td><td>copywriting, brand strategy, concepting, OOH campaigns, editorial, comedy writing, collage</td></tr>
+    </table>
+  </div>
+
+  <hr>
+
+  <div class="section" id="contact">
+    <h2>contact</h2>
+    <p>if you want to talk, here is how to do that.</p>
+    <p>email: <a href="mailto:georgemurphy106@gmail.com" class="email-link">georgemurphy106@gmail.com</a></p>
+    <p>linkedin: <a href="https://www.linkedin.com/in/george-m-4368551b3/" class="email-link">linkedin.com/in/george-m-4368551b3</a></p>
+    <p style="font-size:12px;color:gray;">i check my email. i will write back.</p>
+  </div>
+
+  <hr class="double">
+
+  <div class="footer-txt">
+    &copy; 2026 george murphy &nbsp;|&nbsp; I used AI for this site because idk how to code, I'm sorry
+  </div>
+</div>
+
+<script>
+  function palTog(btn) {
+    const exp = btn.nextElementSibling;
+    const open = exp.classList.toggle('open');
+    btn.textContent = open ? '> COLLAPSE_RECORD' : '> EXPAND_RECORD';
+  }
+
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
+  const bar = document.getElementById('noise-bar');
+  let str = '';
+  for (let i = 0; i < 200; i++) str += chars[Math.floor(Math.random() * chars.length)] + ' ';
+  bar.textContent = str + str;
+
+  let pos = 0;
+  function scrollNoise() {
+    pos -= 1;
+    if (pos < -bar.scrollWidth / 2) pos = 0;
+    bar.style.transform = `translateX(${pos}px)`;
+    requestAnimationFrame(scrollNoise);
+  }
+  scrollNoise();
+
+  setInterval(() => {
+    const idx = Math.floor(Math.random() * str.length);
+    const newChar = chars[Math.floor(Math.random() * chars.length)];
+    str = str.substring(0, idx) + newChar + str.substring(idx + 1);
+    bar.textContent = str + str;
+  }, 80);
+</script>
