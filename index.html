@@ -2,7 +2,11 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body, .wrap { background: white; font-family: Arial, sans-serif; color: black; }
-  .wrap { padding: 18px; max-width: 680px; }
+  .wrap { padding: 40px 60px
+  
+; max-width: 1320px
+
+; }
 
   .site-title { font-size: 28px; font-weight: bold; margin-bottom: 2px; }
   .site-title span { color: navy; }
@@ -38,9 +42,13 @@
   .comedy-box h3 { font-size: 14px; font-weight: bold; margin-bottom: 6px; }
   .comedy-box p { font-size: 13px; line-height: 1.6; margin-bottom: 6px; }
 
-  .parody-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
-  .parody-cell { aspect-ratio: 2/3; background: #eee; border: 1px dashed #aaa; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 10px; color: #aaa; text-align: center; font-style: italic; padding: 6px; gap: 4px; }
-  .parody-caption { font-size: 11px; color: gray; text-align: center; margin-top: 4px; font-style: italic; }
+  .parody-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+
+
+; gap: 8px; margin-top: 10px; }
+.parody-cell { aspect-ratio: 2/3; margin-bottom: 4px;
+ background: #eee; border: 1px dashed #aaa; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 10px; color: #aaa; text-align: center; font-style: italic; padding: 6px; gap: 4px; cursor: pointer; }
+  .parody-caption { font-size: 11px; color: gray; text-align: center; margin-top: 6px; font-style: italic; padding-bottom: 16px; display: block; width: 100%; }
 
   .collage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 8px; }
   .collage-cell { aspect-ratio: 1; background: #eee; border: 1px dashed #aaa; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #aaa; text-align: center; font-style: italic; padding: 6px; }
@@ -56,6 +64,46 @@
   .section { margin-bottom: 22px; }
   h2 { font-size: 17px; font-weight: bold; margin-bottom: 8px; text-decoration: underline; }
   p { font-size: 13px; line-height: 1.6; margin-bottom: 10px; }
+.lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:999; align-items:center; justify-content:center; }
+.lightbox.open { display:flex; }
+.lightbox img { max-width:90vw; max-height:90vh; object-fit:contain; }
+
+.frame-dash, .frame-wave, .frame-x {
+  position: relative;
+  padding: 14px;
+  background: #fff;
+}
+.frame-dash::before, .frame-wave::before, .frame-x::before,
+.frame-dash::after, .frame-wave::after, .frame-x::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 16px;
+  background-repeat: repeat-x;
+  background-size: 16px 16px;
+}
+.frame-dash::before { top: 0; background-image: repeating-linear-gradient(90deg, #000 0 6px, transparent 6px 10px); }
+.frame-dash::after { bottom: 0; background-image: repeating-linear-gradient(90deg, #000 0 6px, transparent 6px 10px); }
+
+.frame-wave::before, .frame-wave::after {
+  background-image:
+    linear-gradient(135deg, transparent 45%, #000 45% 55%, transparent 55%),
+    linear-gradient(45deg, transparent 45%, #000 45% 55%, transparent 55%);
+  background-position: 0 0, 8px 0;
+  background-size: 16px 16px;
+}
+.frame-wave::before { top: 0; }
+.frame-wave::after { bottom: 0; }
+
+.frame-x::before, .frame-x::after {
+  background-image:
+    linear-gradient(45deg, transparent 45%, #000 45% 55%, transparent 55%),
+    linear-gradient(135deg, transparent 45%, #000 45% 55%, transparent 55%);
+  background-position: 0 0, 0 0;
+  background-size: 12px 12px;
+}
+.frame-x::before { top: 0; }
+.frame-x::after { bottom: 0; }
 </style>
 
 <meta property="og:image" content="https://georgemurphy106.github.io/bannerimage.png">
@@ -65,7 +113,7 @@
   <h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">George Murphy creative portfolio</h2>
 
   <div class="site-title"><span>George Murphy</span> — portfolio</div>
-  <div class="under-title">last updated: june 2026 &nbsp;|&nbsp; best viewed in 800x600 &nbsp;|&nbsp; <span style="color:red;">NEW:</span> collages added</div>
+  <div class="under-title">last updated: june 2026 &nbsp;|&nbsp; <span style="color:red;">NEW:</span> collages added</div>
 
   <div class="nav">
     <a onclick="document.getElementById('work').scrollIntoView()">my work</a>
@@ -75,15 +123,15 @@
     <a onclick="document.getElementById('contact').scrollIntoView()">contact</a>
   </div>
 
-  <div class="marquee-wrap">
-    <div class="marquee-inner" id="noise-bar"></div>
-  </div>
+  <div class="marquee-wrap" id="marquee-wrap">
+  <div class="marquee-inner" id="noise-bar"></div>
+</div>
 
   <hr class="double">
 
   <div class="section" style="margin-bottom:0;">
-    <p><strong>My experience is unique. Palantir, comedy, and collages. No for real I'm being serious. Like actually.</strong></p>
-    <p style="font-size:12px;color:gray;">Almost 2 years down at Palantir. The stuff I make there is a step away from what I'm used to, but I still have pride in my work. Check it out below.</p>
+    <p><strong>My creative experience is unique: Defense tech, comedy, and collages.</strong></p>
+    <p style="font-size:12px;color:gray;">Almost 2 years down at Palantir. The stuff I make there is a step away from what I'm used to, but I still have pride in my work. Check out some examples below.</p>
   </div>
 
   <hr class="double">
@@ -108,7 +156,7 @@
       <div class="label">&gt; ASSET_TYPE: PRINT / EVENT</div>
       <h3>// Poster Design — Army v Navy Game</h3>
 <img src="armynavy.png" style="width:70%;height:auto;display:block;margin-bottom:8px;border:1px solid #00ff41;">
-      <p>&gt; I led design and copy for this one. It was in a pamphlet given to guests at the Army v Navy game.</p>
+      <p>&gt; I think this is pretty sick, right? I led design and copy for this one. It was in a pamphlet given to guests at the Army v Navy game.</p>
       <button class="pal-toggle" onclick="palTog(this)">&gt; EXPAND_RECORD</button>
       <div class="pal-expanded">
         <div class="pal-copy">This was a project I took upon on my own accord to prove my worth as an intern. I wanted to come to the table with a full copy + design product finished.</div>
@@ -133,15 +181,15 @@
 
   <div class="section" id="comedy">
     <h2>comedy stuff</h2>
-    <p>I love comedy so much. Yeah call me a dork but I really enjoy improv comedy. You can learn so much about life, others, listening, ego, and your deeply held perspectives by doing improv comedy in front of people that you don't know.</p>
+    <p>I love comedy so much. I especially enjoy improv comedy. You can learn so much about life, others, listening, ego, and your deeply held perspectives by doing improv comedy in front of people that you don't know.</p>
 
     <div class="comedy-box">
       <h3>Two Chairs Theatre Company</h3>
       <p>co-founded a theater company in chicago. chicago reader called it best new theater company in 2023. fun times.</p>
     </div>
     <div class="comedy-box">
-      <h3>Second City Training Center</h3>
-      <p>trained at second city. the discipline of being funny under a constraint is the same discipline as writing good copy under a brief.</p>
+      <h3>Second City Writer/Performer</h3>
+      <p>i trained, wrote and performed at Second City in Chicago. the discipline of being funny under a constraint is the same discipline as writing good copy under a brief.</p>
     </div>
     <div class="comedy-box">
       <h3>Radio DePaul — General Manager</h3>
@@ -149,31 +197,28 @@
     </div>
 
     <div class="comedy-box">
-      <h3>Parody Posters</h3>
-      <p>i make parody posters. here are some of them.</p>
+      <h3>Comedy Posters</h3>
+      <p>for fun, i make absurb posters. here are some of them.</p>
       <div class="parody-grid">
-        <div><div class="parody-cell">drop image<br>(parody 1)</div><div class="parody-caption">[ title / caption ]</div></div>
-        <div><div class="parody-cell">drop image<br>(parody 2)</div><div class="parody-caption">[ title / caption ]</div></div>
-        <div><div class="parody-cell">drop image<br>(parody 3)</div><div class="parody-caption">[ title / caption ]</div></div>
-        <div><div class="parody-cell">drop image<br>(parody 4)</div><div class="parody-caption">[ title / caption ]</div></div>
-        <div><div class="parody-cell">drop image<br>(parody 5)</div><div class="parody-caption">[ title / caption ]</div></div>
-        <div><div class="parody-cell">drop image<br>(parody 6)</div><div class="parody-caption">[ title / caption ]</div></div>
-      </div>
-      <p style="font-size:12px;color:gray;margin-top:10px;">[ add links to other comedy writing / sketches / scripts here ]</p>
+  <div><img src="Graduation.png" style="width:100%;height:100%;object-fit:cover;cursor:pointer;"><div class="parody-caption">inspired by graduation day college offers</div></div>
+  <div><img src="Contribute_More.png" style="width:100%;height:100%;object-fit:cover;cursor:pointer;"><div class="parody-caption">inspired by coupon catalogues</div></div>
+  <div><img src="Excelsion_Sales_Summit.png" style="width:100%;height:100%;object-fit:cover;cursor:pointer;"><div class="parody-caption">inspired by job interviews </div></div>
+  <div><img src="Pineal_Gland.png" style="width:100%;height:100%;object-fit:cover;cursor:pointer;"><div class="parody-caption">inspired by Facebook group conspiracy posting</div></div>
+</div>
+      <p style="font-size:12px;color:gray;margin-top:10px;"></p>
     </div>
   </div>
 
-  <div class="section" id="collages">
-    <h2>collages <span class="new-gif">NEW!!</span></h2>
-    <p>I express myself with collages. made from thrifted books and found print materials. made entirely for personal reasons.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;margin-bottom:12px
-;gap:8px;margin-bottom:8px;">
-  <img src="collage1.png" style="width:100%;height:auto;display:block;">
-  <img src="collage2.png" style="width:100%;height:auto;display:block;">
-  <img src="collage3.png" style="width:100%;height:auto;display:block;">
-  <img src="collage4.png" style="width:100%;height:auto;display:block;">
-  <img src="collage5.png" style="width:100%;height:auto;display:block;">
-  <img src="collage6.png" style="width:100%;height:auto;display:block;">
+  <h2>collages <span class="new-gif">NEW!!</span></h2>
+<p>I express myself with collages. made from thrifted books and found print materials. made entirely for personal reasons.</p>
+<div style="position:relative;max-width:500px;margin:0 auto;">
+  <div id="collage-carousel" style="overflow:hidden;border:1px solid #ccc;">
+    <img id="carousel-img" src="collage1.png" style="width:100%;height:auto;display:block;">
+  </div>
+  <button onclick="changeCollage(-1)" style="position:absolute;left:-40px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:28px;cursor:pointer;color:#000;">&#8249;</button>
+  <button onclick="changeCollage(1)" style="position:absolute;right:-40px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:28px;cursor:pointer;color:#000;">&#8250;</button>
+  <p style="text-align:center;font-size:12px;color:gray;margin-top:8px;">collage <span id="collage-counter">1</span> of 6</p>
+</div>
 
     <p style="font-size:12px;color:gray;">If I could make a living making these, we wouldn't be in contact right now. Check them all out at: https://www.instagram.com/thingstapedtogether/</p>
   </div>
@@ -207,33 +252,48 @@
     &copy; 2026 george murphy &nbsp;|&nbsp; I used AI for this site because idk how to code, I'm sorry
   </div>
 </div>
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="">
+</div>
 
 <script>
-  function palTog(btn) {
-    const exp = btn.nextElementSibling;
-    const open = exp.classList.toggle('open');
-    btn.textContent = open ? '> COLLAPSE_RECORD' : '> EXPAND_RECORD';
-  }
-
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
+  const contactInfo = 'CALL ME: 203-451-9606 <> EMAIL ME:  georgemurphy106@gmail.com <> ';
+  const repeated = contactInfo.repeat(12);
   const bar = document.getElementById('noise-bar');
-  let str = '';
-  for (let i = 0; i < 200; i++) str += chars[Math.floor(Math.random() * chars.length)] + ' ';
-  bar.textContent = str + str;
+  bar.textContent = repeated;
 
   let pos = 0;
-  function scrollNoise() {
-    pos -= 1;
-    if (pos < -bar.scrollWidth / 2) pos = 0;
-    bar.style.transform = `translateX(${pos}px)`;
-    requestAnimationFrame(scrollNoise);
-  }
-  scrollNoise();
+  let paused = false;
 
-  setInterval(() => {
-    const idx = Math.floor(Math.random() * str.length);
-    const newChar = chars[Math.floor(Math.random() * chars.length)];
-    str = str.substring(0, idx) + newChar + str.substring(idx + 1);
-    bar.textContent = str + str;
-  }, 80);
+  const wrap = document.getElementById('marquee-wrap');
+  wrap.addEventListener('mouseenter', () => paused = true);
+  wrap.addEventListener('mouseleave', () => paused = false);
+
+  function scrollBar() {
+    if (!paused) {
+      pos -= 1;
+      if (pos < -bar.scrollWidth / 2) pos = 0;
+      bar.style.transform = `translateX(${pos}px)`;
+    }
+    requestAnimationFrame(scrollBar);
+  }
+  scrollBar();
+document.querySelectorAll('.parody-cell img').forEach(img => {
+  img.addEventListener('click', () => {
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = img.src;
+    lb.classList.add('open');
+  });
+});
+document.getElementById('lightbox').addEventListener('click', () => {
+  document.getElementById('lightbox').classList.remove('open');
+});
+
+const collageImages = ['collage1.png', 'collage2.png', 'collage3.png', 'collage4.png', 'collage5.png', 'collage6.png'];
+let collageIndex = 0;
+function changeCollage(direction) {
+  collageIndex = (collageIndex + direction + collageImages.length) % collageImages.length;
+  document.getElementById('carousel-img').src = collageImages[collageIndex];
+  document.getElementById('collage-counter').textContent = collageIndex + 1;
+
 </script>
