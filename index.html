@@ -199,11 +199,14 @@
     <div class="comedy-box">
       <h3>Comedy Posters</h3>
       <p>for fun, i make absurb posters. here are some of them.</p>
-      <div class="parody-grid">
-  <div><img src="Graduation.png" style="width:100%;height:100%;object-fit:cover;cursor:pointer;"><div class="parody-caption">inspired by graduation day college offers</div></div>
-  <div><img src="Contribute_More.png" style="width:100%;height:100%;object-fit:cover;cursor:pointer;"><div class="parody-caption">inspired by coupon catalogues</div></div>
-  <div><img src="Excelsion_Sales_Summit.png" style="width:100%;height:100%;object-fit:cover;cursor:pointer;"><div class="parody-caption">inspired by job interviews </div></div>
-  <div><img src="Pineal_Gland.png" style="width:100%;height:100%;object-fit:cover;cursor:pointer;"><div class="parody-caption">inspired by Facebook group conspiracy posting</div></div>
+      <<div style="position:relative;max-width:400px;margin:0 auto;">
+  <div style="overflow:hidden;border:1px solid #ccc;">
+    <img id="poster-img" src="Graduation.png" style="width:100%;height:auto;display:block;cursor:pointer;">
+  </div>
+  <button onclick="changePoster(-1)" style="position:absolute;left:-40px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:28px;cursor:pointer;color:#000;">&#8249;</button>
+  <button onclick="changePoster(1)" style="position:absolute;right:-40px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:28px;cursor:pointer;color:#000;">&#8250;</button>
+  <p id="poster-caption" style="text-align:center;font-size:12px;color:gray;margin-top:8px;font-style:italic;">inspired by graduation day college offers</p>
+  <p style="text-align:center;font-size:12px;color:gray;margin-top:4px;">poster <span id="poster-counter">1</span> of 4</p>
 </div>
       <p style="font-size:12px;color:gray;margin-top:10px;"></p>
     </div>
@@ -233,6 +236,8 @@
       <tr><td>current job</td><td>creative content strategist, palantir technologies</td></tr>
       <tr><td>background</td><td>philosophy degree. comedy training. theater. radio.</td></tr>
       <tr><td>skills</td><td>copywriting, brand strategy, concepting, OOH campaigns, editorial, comedy writing, collage</td></tr>
+      <tr><td>impressive acronyms i know</td><td>OSDK, ORCOM, SGTM, BATNA, BLUF, ETC.</td></tr>
+      <tr><td>i am good at</td><td>Adobe Suite, Figma, Contentful, EOLAS, WordPress, Codex</td></tr>
     </table>
   </div>
 
@@ -256,7 +261,7 @@
   <img id="lightbox-img" src="">
 </div>
 
-<script>
+ <script>
   const contactInfo = 'CALL ME: 203-451-9606 <> EMAIL ME:  georgemurphy106@gmail.com <> ';
   const repeated = contactInfo.repeat(12);
   const bar = document.getElementById('noise-bar');
@@ -278,22 +283,34 @@
     requestAnimationFrame(scrollBar);
   }
   scrollBar();
-document.querySelectorAll('.parody-cell img').forEach(img => {
-  img.addEventListener('click', () => {
-    const lb = document.getElementById('lightbox');
-    document.getElementById('lightbox-img').src = img.src;
-    lb.classList.add('open');
-  });
-});
-document.getElementById('lightbox').addEventListener('click', () => {
-  document.getElementById('lightbox').classList.remove('open');
-});
 
-const collageImages = ['collage1.png', 'collage2.png', 'collage3.png', 'collage4.png', 'collage5.png', 'collage6.png'];
-let collageIndex = 0;
-function changeCollage(direction) {
-  collageIndex = (collageIndex + direction + collageImages.length) % collageImages.length;
-  document.getElementById('carousel-img').src = collageImages[collageIndex];
-  document.getElementById('collage-counter').textContent = collageIndex + 1;
-}
+  document.querySelectorAll('.parody-cell img').forEach(img => {
+    img.addEventListener('click', () => {
+      const lb = document.getElementById('lightbox');
+      document.getElementById('lightbox-img').src = img.src;
+      lb.classList.add('open');
+    });
+  });
+
+  document.getElementById('lightbox').addEventListener('click', () => {
+    document.getElementById('lightbox').classList.remove('open');
+  });
+
+  const collageImages = ['collage1.png', 'collage2.png', 'collage3.png', 'collage4.png', 'collage5.png', 'collage6.png'];
+  let collageIndex = 0;
+  function changeCollage(direction) {
+    collageIndex = (collageIndex + direction + collageImages.length) % collageImages.length;
+    document.getElementById('carousel-img').src = collageImages[collageIndex];
+    document.getElementById('collage-counter').textContent = collageIndex + 1;
+  }
+
+  const posterImages = ['Graduation.png', 'Contribute_More.png', 'Excelsion_Sales_Summit.png', 'Pineal_Gland.png'];
+  const posterCaptions = ['inspired by graduation day college offers', 'inspired by coupon catalogues', 'inspired by my souless interviews with sales companies', 'inspired by Facebook group conspiracy posting'];
+  let posterIndex = 0;
+  function changePoster(direction) {
+    posterIndex = (posterIndex + direction + posterImages.length) % posterImages.length;
+    document.getElementById('poster-img').src = posterImages[posterIndex];
+    document.getElementById('poster-caption').textContent = posterCaptions[posterIndex];
+    document.getElementById('poster-counter').textContent = posterIndex + 1;
+  }
 </script>
