@@ -158,7 +158,7 @@
       <div class="label">&gt; ASSET_TYPE: PRINT / EVENT</div>
       <h3>// Poster Design — Army v Navy Game</h3>
 <img src="armynavy.png" style="width:70%;height:auto;display:block;margin-bottom:8px;border:1px solid #00ff41;">
-      <p>&gt; I think this is pretty sick, right? I led design and copy for this one. It was in a pamphlet given to guests at the Army v Navy game.</p>
+      <p>&gt; I think this is pretty cool. I led design and copy for this one. It was in a pamphlet given to guests at the Army v Navy game.</p>
       <button class="pal-toggle" onclick="palTog(this)">&gt; EXPAND_RECORD</button>
       <div class="pal-expanded">
         <div class="pal-copy">This was a project I took upon on my own accord to prove my worth as an intern. I wanted to come to the table with a full copy + design product finished.</div>
@@ -176,8 +176,18 @@
       </div>
     </div>
 
-    <p>&gt; END_OF_FILE &nbsp;// additional work available on request &nbsp;<span class="pal-cursor">_</span></p>
+<div class="pal-item">
+  <div class="label">&gt; ASSET_TYPE: ART DIRECTION / EDITORIAL</div>
+  <h3>// The Republic Journal</h3>
+  <p>&gt; I do art direction for The Republic, Palantir's international affairs journal — both the online publication and their print issue.</p>
+  <a href="https://therepublicjournal.com" target="_blank" style="display:inline-block; margin-bottom:8px; font-family:'Courier New',monospace; font-size:12px; color:#00ff41; border:1px solid #00ff41; padding:8px 14px; text-decoration:none;">&gt; OPEN_SITE: therepublicjournal.com</a>
+  <button class="pal-toggle" onclick="palTog(this)">&gt; EXPAND_RECORD</button>
+  <div class="pal-expanded">
+    <div class="pal-copy">My favorite part of this is picking imagery that fits the general thesis/attitude of the essay we are given. I choose the cover art for all pieces. </div>
   </div>
+</div>
+
+<p>&gt; END_OF_FILE &nbsp;// additional work available on request &nbsp;<span class="pal-cursor">_</span></p>  </div>
 
   <hr class="double">
 
@@ -201,7 +211,7 @@
     <div class="comedy-box">
       <h3>Comedy Posters</h3>
       <p>for fun, i make absurb posters. here are some of them.</p>
-      <<div style="position:relative;max-width:400px;margin:0 auto;">
+<div style="position:relative;max-width:400px;margin:0 auto;">
   <div style="overflow:hidden;border:1px solid #ccc;">
     <img id="poster-img" src="Graduation.png" style="width:100%;height:auto;display:block;cursor:pointer;">
   </div>
@@ -309,6 +319,12 @@
   const posterImages = ['Graduation.png', 'Contribute_More.png', 'Excelsion_Sales_Summit.png', 'Pineal_Gland.png'];
   const posterCaptions = ['inspired by graduation day college offers', 'inspired by coupon catalogues', 'inspired by my souless interviews with sales companies', 'inspired by Facebook group conspiracy posting'];
   let posterIndex = 0;
+  function palTog(btn) {
+    const exp = btn.nextElementSibling;
+    if (!exp) return;
+    const open = exp.classList.toggle('open');
+    btn.textContent = open ? '> COLLAPSE_RECORD' : '> EXPAND_RECORD';
+  }
   function changePoster(direction) {
     posterIndex = (posterIndex + direction + posterImages.length) % posterImages.length;
     document.getElementById('poster-img').src = posterImages[posterIndex];
