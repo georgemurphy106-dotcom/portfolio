@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Collage — George Murphy</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header container">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div class="brand">George Murphy</div>
+      <nav class="top-nav"><a href="index.html">Home</a> <a href="professional.html">Professional</a> <a href="about.html">About</a></nav>
+    </div>
+  </header>
+
+  <main class="page container">
+    <h1>Collages</h1>
+    <p class="byline">Archive-like presentation. Click an image to view at full size.</p>
+
+    <section class="gallery" aria-label="Collage gallery">
+      <figure class="piece">
+        <button class="js-open" data-src="images/collage/collage1.png" aria-label="Open collage 1"><img src="images/collage/collage1.png" alt="Collage 1"></button>
+        <figcaption class="meta">Untitled — 2025 — mixed media</figcaption>
+      </figure>
+
+      <figure class="piece">
+        <button class="js-open" data-src="images/collage/collage2.png" aria-label="Open collage 2"><img src="images/collage/collage2.png" alt="Collage 2"></button>
+        <figcaption class="meta">Untitled — 2025 — mixed media</figcaption>
+      </figure>
+
+      <figure class="piece">
+        <button class="js-open" data-src="images/collage/collage3.png" aria-label="Open collage 3"><img src="images/collage/collage3.png" alt="Collage 3"></button>
+        <figcaption class="meta">Untitled — 2024 — found print</figcaption>
+      </figure>
+
+      <figure class="piece">
+        <button class="js-open" data-src="images/collage/collage4.png" aria-label="Open collage 4"><img src="images/collage/collage4.png" alt="Collage 4"></button>
+        <figcaption class="meta">Untitled — 2024 — mixed media</figcaption>
+      </figure>
+
+      <figure class="piece">
+        <button class="js-open" data-src="images/collage/collage5.png" aria-label="Open collage 5"><img src="images/collage/collage5.png" alt="Collage 5"></button>
+        <figcaption class="meta">Untitled — 2023 — found print</figcaption>
+      </figure>
+
+      <figure class="piece">
+        <button class="js-open" data-src="images/collage/collage6.png" aria-label="Open collage 6"><img src="images/collage/collage6.png" alt="Collage 6"></button>
+        <figcaption class="meta">Untitled — 2023 — mixed media</figcaption>
+      </figure>
+    </section>
+  </main>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="lightbox-close" aria-label="Close">✕</button>
+    <img src="" alt="expanded collage">
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

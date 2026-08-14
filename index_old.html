@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>George Murphy — Portfolio (original)</title>
+  <style>
+  /* Original inline styles preserved for backup */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body, .wrap { background: white; font-family: Arial, sans-serif; color: black; }
+  .wrap { padding: 40px 60px
+  
+; max-width: 1320px
+
+; }
+
+  .site-title { font-size: 28px; font-weight: bold; margin-bottom: 2px; }
+  .site-title span { color: navy; }
+  .under-title { font-size: 12px; color: gray; margin-bottom: 14px; }
+
+  hr { border: none; border-top: 1px solid black; margin: 14px 0; }
+  hr.double { border-top: 3px double black; }
+
+  .nav { font-size: 13px; margin-bottom: 18px; }
+  .nav a { color: blue; margin-right: 10px; text-decoration: underline; cursor: pointer; }
+  .nav a:hover { color: purple; }
+
+  .marquee-wrap { background: yellow; border: 1px solid black; padding: 4px 0; margin: 14px 0; overflow: hidden; }
+  .marquee-inner { display: inline-block; white-space: nowrap; font-size: 12px; font-family: 'Courier New', monospace; letter-spacing: 0.08em; }
+
+  .palantir-section { background: #000; padding: 18px; margin: 0 -18px; font-family: 'Courier New', monospace; color: #00ff41; }
+  .palantir-section h2 { font-family: 'Courier New', monospace; font-size: 13px; font-weight: bold; text-decoration: none; color: #00ff41; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; border-bottom: 1px solid #00ff41; padding-bottom: 6px; }
+  .palantir-section p { font-size: 12px; color: #00cc33; line-height: 1.6; margin-bottom: 10px; font-family: 'Courier New', monospace; }
+  .pal-item { border: 1px solid #00ff41; padding: 12px; margin-bottom: 14px; }
+  .pal-item .label { font-size: 10px; text-transform: uppercase; color: #007a1f; margin-bottom: 4px; letter-spacing: 0.1em; }
+  .pal-item h3 { font-size: 13px; font-weight: bold; color: #00ff41; margin-bottom: 6px; font-family: 'Courier New', monospace; text-transform: uppercase; letter-spacing: 0.06em; }
+  .pal-img { background: #0a0a0a; border: 1px dashed #00ff41; height: 100px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #007a1f; margin-bottom: 8px; font-style: italic; font-family: 'Courier New', monospace; }
+  .pal-toggle { font-size: 12px; color: #00ff41; text-decoration: underline; cursor: pointer; background: none; border: none; padding: 0; font-family: 'Courier New', monospace; }
+  .pal-toggle:hover { color: #fff; }
+  .pal-expanded { display: none; border-top: 1px dashed #00ff41; margin-top: 10px; padding-top: 10px; }
+  .pal-expanded.open { display: block; }
+  .pal-expanded p { color: #00cc33; }
+  .pal-copy { background: #0a0a0a; border-left: 3px solid #00ff41; padding: 8px 10px; font-size: 12px; font-style: italic; color: #00ff41; line-height: 1.6; margin: 8px 0; font-family: 'Courier New', monospace; }
+  .pal-cursor { animation: blink 1s step-start infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .comedy-box { border: 2px solid black; padding: 12px; margin-bottom: 14px; background: #fffde7; }
+  .comedy-box h3 { font-size: 14px; font-weight: bold; margin-bottom: 6px; }
+  .comedy-box p { font-size: 13px; line-height: 1.6; margin-bottom: 6px; }
+
+  .parody-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+
+
+; gap: 8px; margin-top: 10px; }
+.parody-cell { aspect-ratio: 2/3; margin-bottom: 4px;
+ background: #eee; border: 1px dashed #aaa; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 10px; color: #aaa; text-align: center; font-style: italic; padding: 6px; gap: 4px; cursor: pointer; }
+  .parody-caption { font-size: 11px; color: gray; text-align: center; margin-top: 6px; font-style: italic; padding-bottom: 16px; display: block; width: 100%; }
+
+  .collage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 8px; }
+  .collage-cell { aspect-ratio: 1; background: #eee; border: 1px dashed #aaa; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #aaa; text-align: center; font-style: italic; padding: 6px; }
+
+  .about-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 14px; }
+  .about-table td { padding: 4px 8px; border: 1px solid #ccc; vertical-align: top; }
+  .about-table td:first-child { font-weight: bold; width: 38%; background: #f0f0f0; }
+
+  .copy-sample { background: #f5f5f5; border-left: 3px solid black; padding: 8px 10px; font-size: 12px; font-style: italic; line-height: 1.6; margin: 8px 0; }
+  .footer-txt { font-size: 11px; color: gray; margin-top: 14px; text-align: center; }
+  .new-gif { color: red; font-size: 11px; font-weight: bold; margin-left: 6px; }
+  .email-link { color: blue; font-size: 13px; }
+  .section { margin-bottom: 22px; }
+  h2 { font-size: 17px; font-weight: bold; margin-bottom: 8px; text-decoration: underline; }
+  p { font-size: 13px; line-height: 1.6; margin-bottom: 10px; }
+.lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:999; align-items:center; justify-content:center; }
+.lightbox.open { display:flex; }
+.lightbox img { max-width:90vw; max-height:90vh; object-fit:contain; }
+
+ .frame-dash, .frame-wave, .frame-x {
+  position: relative;
+  padding: 14px;
+  background: #fff;
+}
+.frame-dash::before, .frame-wave::before, .frame-x::before,
+.frame-dash::after, .frame-wave::after, .frame-x::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 16px;
+  background-repeat: repeat-x;
+  background-size: 16px 16px;
+}
+.frame-dash::before { top: 0; background-image: repeating-linear-gradient(90deg, #000 0 6px, transparent 6px 10px); }
+.frame-dash::after { bottom: 0; background-image: repeating-linear-gradient(90deg, #000 0 6px, transparent 6px 10px); }
+
+.frame-wave::before, .frame-wave::after {
+  background-image:
+    linear-gradient(135deg, transparent 45%, #000 45% 55%, transparent 55%),
+    linear-gradient(45deg, transparent 45%, #000 45% 55%, transparent 55%);
+  background-position: 0 0, 8px 0;
+  background-size: 16px 16px;
+}
+.frame-wave::before { top: 0; }
+.frame-wave::after { bottom: 0; }
+
+.frame-x::before, .frame-x::after {
+  background-image:
+    linear-gradient(45deg, transparent 45%, #000 45% 55%, transparent 55%),
+    linear-gradient(135deg, transparent 45%, #000 45% 55%, transparent 55%);
+  background-position: 0 0, 0 0;
+  background-size: 12px 12px;
+}
+.frame-x::before { top: 0; }
+.frame-x::after { bottom: 0; }
+  </style>
+</head>
+<body>
+<!-- full original index.html content preserved as backup -->
+<div style="padding:20px;font-family:Arial, sans-serif;">This file is a backup of the original `index.html`. The live site has been restructured. See `index.html` for the new landing page and `professional.html`, `collage.html`, and `about.html` for section pages.</div>
+</body>
+</html>
