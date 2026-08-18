@@ -132,7 +132,8 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Inter, "Helveti
 .professional-page .case-study:nth-child(2) .case-badges,
 .professional-page .case-study:nth-child(3) .case-badges{margin-top:10px}
 .professional-page .republic-case{grid-template-columns:minmax(280px,.75fr) minmax(0,1.25fr)}
-.professional-page .republic-case .case-media{border:0;border-right:1px solid var(--text)}
+.professional-page .case-study.republic-case .case-media{border:0;border-left:1px solid var(--text)}
+.professional-page .republic-case .case-media img{margin-top:-2px}
 
 @media (max-width:900px){
   .professional-page .case-study{grid-template-columns:1fr;gap:0;margin-left:0;margin-right:0}
@@ -145,7 +146,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Inter, "Helveti
   .professional-page .case-study:nth-child(3) .case-content{grid-column:1;grid-row:2}
   .professional-page .case-study .case-media img{min-height:0;height:auto;max-height:none;object-fit:contain}
   .professional-page .republic-case{grid-template-columns:1fr}
-  .professional-page .republic-case .case-media{border:0;border-bottom:1px solid var(--text)}
+  .professional-page .case-study.republic-case .case-media{border:0;border-bottom:1px solid var(--text)}
 }
 
 .case-meta{font-size:13px;color:var(--muted);margin-bottom:12px}
@@ -209,6 +210,11 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Inter, "Helveti
   .nav-grid{grid-template-columns:1fr}
   .nav-link{min-height:70px;padding:13px 15px;align-items:center}
   .nav-link+.nav-link{border-left:0;border-top:1px solid var(--text)}
+  .professional-page .case-badges{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;border:1px solid var(--text)}
+  .professional-page .case-badges .badge{border:0;text-align:center}
+  .professional-page .case-badges .badge+.badge{border-left:0}
+  .professional-page .case-badges .badge:nth-child(odd){border-right:1px solid var(--text)}
+  .professional-page .case-badges .badge:nth-child(-n+2){border-bottom:1px solid var(--text)}
   .projects{grid-template-columns:1fr}
   .gallery{grid-template-columns:repeat(2,1fr)}
 }
