@@ -105,48 +105,54 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Inter, "Helveti
 .professional-page .case-meta{padding-top:10px;border-top:1px solid var(--text);font:700 10px/1.5 Arial,sans-serif;letter-spacing:.045em;text-transform:uppercase}
 .professional-page .case-content p{font-size:14px;line-height:1.55}
 .professional-page .case-quote{margin:20px 0;padding:16px 0;border-top:1px solid var(--text);border-bottom:1px solid var(--text);border-left:0;font-family:Arial,sans-serif;font-size:clamp(20px,2vw,28px);font-weight:700;line-height:1.08;letter-spacing:-.025em}
-.professional-page .case-badges{margin-top:18px;gap:0;border:1px solid var(--text);align-self:flex-start}
-.professional-page .badge{padding:7px 9px;border:0;font:700 9px/1 Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--text)}
-.professional-page .badge+.badge{border-left:1px solid var(--text)}
+.professional-page .case-badges{margin-top:18px;gap:6px;border:0;align-self:flex-start}
+.professional-page .badge{padding:7px 9px;border:1px solid var(--text);font:700 9px/1 Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--text)}
 .professional-page .case-study:nth-child(odd) .case-media{order:1}
 .professional-page .case-study:nth-child(odd) .case-content{order:2}
 .professional-page .case-study:nth-child(even) .case-content{order:1}
 .professional-page .case-study:nth-child(even) .case-media{order:2;border-top:1px solid var(--text);border-bottom:0}
 .professional-page .case-study.reverse .case-media{border-left:0}
-.professional-page .case-study:nth-child(2),
-.professional-page .case-study:nth-child(3){display:grid;grid-template-columns:1fr 1fr}
-.professional-page .case-study:nth-child(2) .case-media,
-.professional-page .case-study:nth-child(3) .case-media{width:100%;height:auto;min-height:0;align-self:start;margin:0}
-.professional-page .case-study:nth-child(2) .case-media{grid-column:2;grid-row:1;border:0;border-left:1px solid var(--text)}
-.professional-page .case-study:nth-child(3) .case-media{grid-column:1;grid-row:1;border:0;border-right:1px solid var(--text)}
-.professional-page .case-study:nth-child(2) .case-content,
-.professional-page .case-study:nth-child(3) .case-content{display:flex;min-height:0;padding:clamp(18px,2.25vw,34px)!important}
-.professional-page .case-study:nth-child(2) .case-content{grid-column:1;grid-row:1}
-.professional-page .case-study:nth-child(3) .case-content{grid-column:2;grid-row:1}
-.professional-page .case-study:nth-child(2) .case-content h2,
-.professional-page .case-study:nth-child(3) .case-content h2{font-size:clamp(34px,4vw,60px);margin-bottom:clamp(14px,1.8vw,24px)}
-.professional-page .case-study:nth-child(2) .case-content p,
-.professional-page .case-study:nth-child(3) .case-content p{margin:8px 0;font-size:13px}
-.professional-page .case-study:nth-child(2) .case-quote,
-.professional-page .case-study:nth-child(3) .case-quote{margin:12px 0;padding:10px 0;font-size:clamp(17px,1.7vw,24px)}
-.professional-page .case-study:nth-child(2) .case-badges,
-.professional-page .case-study:nth-child(3) .case-badges{margin-top:10px}
-.professional-page .republic-case{grid-template-columns:minmax(280px,.75fr) minmax(0,1.25fr)}
+.professional-page .compact-case{display:grid;grid-template-columns:1fr 1fr}
+.professional-page .compact-case .case-media{width:100%;height:auto;min-height:0;align-self:start;margin:0}
+.professional-page .compact-case .case-content{display:flex;min-height:0;padding:clamp(18px,2.25vw,34px)!important}
+.professional-page .compact-case .case-content h2{font-size:clamp(34px,4vw,60px);margin-bottom:clamp(14px,1.8vw,24px)}
+.professional-page .compact-case .case-content p{margin:8px 0;font-size:13px}
+.professional-page .compact-case .case-quote{margin:12px 0;padding:10px 0;font-size:clamp(17px,1.7vw,24px)}
+.professional-page .compact-case .case-badges{margin-top:10px}
+.professional-page .media-left .case-media{grid-column:1;grid-row:1;order:1;border:0;border-right:1px solid var(--text)}
+.professional-page .media-left .case-content{grid-column:2;grid-row:1;order:2}
+.professional-page .media-right .case-media{grid-column:2;grid-row:1;order:2;border:0;border-left:1px solid var(--text)}
+.professional-page .media-right .case-content{grid-column:1;grid-row:1;order:1}
+.professional-page .stacked-case .case-media{order:1;border-top:0;border-bottom:1px solid var(--text)}
+.professional-page .stacked-case .case-content{order:2}
+.professional-page .republic-case{grid-template-columns:minmax(0,1.32fr) minmax(280px,.68fr)}
+.professional-page .republic-case .case-content{order:1}
+.professional-page .republic-case .case-media{order:2}
 .professional-page .case-study.republic-case .case-media{border:0;border-left:1px solid var(--text)}
 .professional-page .republic-case .case-media img{margin-top:-2px}
+.professional-page .text-case .case-content{min-height:0}
+.professional-page .text-case .case-content>p,
+.professional-page .text-case .case-meta,
+.professional-page .text-case .case-quote{max-width:900px}
+.professional-page .playlist-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:22px 0 10px}
+.professional-page .playlist-card{display:block;border:1px solid var(--text);color:var(--text);text-decoration:none;transition:background-color .18s ease,color .18s ease}
+.professional-page .playlist-card img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-bottom:1px solid var(--text)}
+.professional-page .playlist-card>span{display:block;padding:11px 12px;font-family:Arial,sans-serif;text-transform:uppercase}
+.professional-page .playlist-card strong{display:block;font-size:12px;letter-spacing:.04em}
+.professional-page .playlist-card small{display:block;margin-top:4px;font-size:9px;font-weight:700;letter-spacing:.05em}
+.professional-page .playlist-card:hover,.professional-page .playlist-card:focus-visible{background:var(--text);color:var(--bg)}
+.professional-page .playlist-card:focus-visible{outline:3px solid var(--text);outline-offset:3px}
 
 @media (max-width:900px){
   .professional-page .case-study{grid-template-columns:1fr;gap:0;margin-left:0;margin-right:0}
   .professional-page .case-content{min-height:0}
-  .professional-page .case-study:nth-child(2),
-  .professional-page .case-study:nth-child(3){display:grid;grid-template-columns:1fr}
-  .professional-page .case-study:nth-child(2) .case-media,
-  .professional-page .case-study:nth-child(3) .case-media{grid-column:1;grid-row:1;width:100%;margin:0;border:0;border-bottom:1px solid var(--text)}
-  .professional-page .case-study:nth-child(2) .case-content,
-  .professional-page .case-study:nth-child(3) .case-content{grid-column:1;grid-row:2}
+  .professional-page .compact-case{display:grid;grid-template-columns:1fr}
+  .professional-page .compact-case .case-media{grid-column:1;grid-row:1;order:1;width:100%;margin:0;border:0;border-bottom:1px solid var(--text)}
+  .professional-page .compact-case .case-content{grid-column:1;grid-row:2;order:2}
   .professional-page .case-study .case-media img{min-height:0;height:auto;max-height:none;object-fit:contain}
   .professional-page .republic-case{grid-template-columns:1fr}
   .professional-page .case-study.republic-case .case-media{border:0;border-bottom:1px solid var(--text)}
+  .professional-page .playlist-grid{grid-template-columns:1fr}
 }
 
 .case-meta{font-size:13px;color:var(--muted);margin-bottom:12px}
