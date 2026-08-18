@@ -1,5 +1,36 @@
 // Minimal JS for navigation transitions and simple gallery handling
 document.addEventListener('DOMContentLoaded', ()=>{
+  // Give homepage tab labels and every page brand the per-letter color treatment.
+  document.querySelectorAll('.nav-label, .site-header .brand').forEach(el=>{
+    const text = el.textContent;
+    el.replaceChildren(...Array.from(text, char=>{
+      if(/\s/.test(char)) return document.createTextNode(char);
+      const letter = document.createElement('span');
+      letter.className = 'color-letter';
+      letter.textContent = char;
+      return letter;
+    }));
+  });
+
+  // Fill each letter of the Collages title with artwork from the gallery on hover.
+  const collageTitle = document.querySelector('.collage-page .page > h1');
+  if(collageTitle){
+    const images = Array.from(document.querySelectorAll('.gallery [data-src]'), item=>item.dataset.src);
+    const backdrops = ['#168aad','#52b788','#f26b4a','#9b5de5','#e9a820','#ef476f'];
+    if(images.length){
+      const text = collageTitle.textContent;
+      collageTitle.replaceChildren(...Array.from(text, (char, index)=>{
+        if(/\s/.test(char)) return document.createTextNode(char);
+        const letter = document.createElement('span');
+        letter.className = 'image-letter';
+        letter.textContent = char;
+        letter.style.backgroundImage = `url("${images[index % images.length]}")`;
+        letter.style.setProperty('--letter-backdrop', backdrops[index % backdrops.length]);
+        return letter;
+      }));
+    }
+  }
+
   // Landing-page exit transition. Links remain functional without JavaScript.
   document.querySelectorAll('[data-nav]').forEach(el=>{
     el.addEventListener('click', (e)=>{

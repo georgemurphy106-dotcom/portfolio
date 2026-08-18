@@ -21,8 +21,17 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Inter, "Helveti
 .landing{height:100vh;height:100dvh;padding:var(--landing-gutter);display:grid;place-items:center}
 .landing-frame{width:100%;border:1px solid var(--text);background:var(--bg)}
 .landing-page .name{margin:0;padding:clamp(24px,5vh,70px) clamp(8px,1.25vw,20px);font-family:Arial,sans-serif;font-size:clamp(72px,15.5vw,250px);font-weight:700;font-stretch:normal;line-height:.72;letter-spacing:-.055em;text-transform:uppercase;overflow:hidden}
-.landing-page .name span{display:block;transition:transform .34s cubic-bezier(.65,0,.35,1),opacity .22s ease}
-.landing-page .name span:last-child{text-align:right;padding-right:.04em}
+.landing-page .name-word{display:block;white-space:nowrap;transition:transform .34s cubic-bezier(.65,0,.35,1),opacity .22s ease}
+.landing-page .name-word:last-child{text-align:right;padding-right:.04em}
+.landing-page .letter,.color-letter{display:inline-block;transition:color .2s ease}
+.landing-page .letter:nth-of-type(6n + 1),.color-letter:nth-of-type(6n + 1){--letter-color:#168aad}
+.landing-page .letter:nth-of-type(6n + 2),.color-letter:nth-of-type(6n + 2){--letter-color:#52b788}
+.landing-page .letter:nth-of-type(6n + 3),.color-letter:nth-of-type(6n + 3){--letter-color:#f26b4a}
+.landing-page .letter:nth-of-type(6n + 4),.color-letter:nth-of-type(6n + 4){--letter-color:#9b5de5}
+.landing-page .letter:nth-of-type(6n + 5),.color-letter:nth-of-type(6n + 5){--letter-color:#e9a820}
+.landing-page .letter:nth-of-type(6n),.color-letter:nth-of-type(6n){--letter-color:#ef476f}
+.landing-page .letter:hover,.color-letter:hover{color:var(--letter-color)}
+.site-header .brand{white-space:nowrap}
 .nav-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--text)}
 .nav-link{min-height:88px;padding:16px 18px;display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:14px;color:var(--text);text-decoration:none;text-transform:uppercase;transition:color .18s ease,background-color .18s ease,transform .32s cubic-bezier(.65,0,.35,1),opacity .22s ease}
 .nav-link+.nav-link{border-left:1px solid var(--text)}
@@ -34,18 +43,18 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Inter, "Helveti
 .nav-link:focus-visible{outline:3px solid var(--text);outline-offset:4px;position:relative;z-index:1}
 .landing-page.is-leaving .nav-link:not(.is-selected){opacity:0;transform:translateY(22px)}
 .landing-page.is-leaving .nav-link.is-selected{color:var(--bg);background:var(--text)}
-.landing-page.is-leaving .name span:first-child{transform:translateX(-3vw);opacity:0}
-.landing-page.is-leaving .name span:last-child{transform:translateX(3vw);opacity:0}
+.landing-page.is-leaving .name-word:first-child{transform:translateX(-3vw);opacity:0}
+.landing-page.is-leaving .name-word:last-child{transform:translateX(3vw);opacity:0}
 .landing-page.is-leaving .landing-frame{transition:opacity .12s ease .26s;opacity:0}
 .byline{color:var(--muted);font-size:13px;margin-top:12px}
 
 /* Common page layout */
 .page{min-height:100vh;padding:72px 28px}
 .section-page .section-header.container{max-width:none;margin:clamp(6px,1vw,14px);padding:0;border:1px solid var(--text)}
-.section-page .section-header>div{min-height:clamp(92px,14vw,180px);padding:clamp(12px,2vw,28px);display:flex;align-items:flex-end!important;gap:28px}
+.section-page .section-header>div{min-height:clamp(92px,14vw,180px);padding:clamp(12px,2vw,28px);display:flex;flex-wrap:wrap;align-items:flex-end!important;column-gap:28px;row-gap:18px}
 .section-page .section-header .brand{font-family:Arial,sans-serif;font-size:clamp(42px,8.5vw,132px);font-weight:700;line-height:.78;letter-spacing:-.055em;text-transform:uppercase}
-.section-page .section-header .top-nav{display:flex;gap:0;border:1px solid var(--text);margin-left:auto}
-.section-page .section-header .top-nav a{padding:10px 13px;text-decoration:none;color:var(--text);font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.055em;text-transform:uppercase;transition:color .18s ease,background-color .18s ease}
+.section-page .section-header .top-nav{display:flex;flex:0 1 auto;max-width:100%;gap:0;border:1px solid var(--text);margin-left:auto}
+.section-page .section-header .top-nav a{min-width:0;padding:10px 13px;white-space:nowrap;text-decoration:none;color:var(--text);font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.055em;text-transform:uppercase;transition:color .18s ease,background-color .18s ease}
 .top-nav a+a{border-left:1px solid var(--text)}
 .top-nav a:hover,.top-nav a:focus-visible{color:var(--bg);background:var(--text)}
 .top-nav a:focus-visible{outline:3px solid var(--text);outline-offset:3px}
@@ -78,7 +87,10 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Inter, "Helveti
 
 /* Professional editorial index */
 .professional-page .page{max-width:none;padding:clamp(44px,7vw,100px) clamp(6px,1vw,14px)}
-.professional-page .page>h1{margin:0 0 10px;font-family:Arial,sans-serif;font-size:clamp(48px,8vw,120px);font-weight:700;line-height:.84;letter-spacing:-.06em;text-transform:uppercase}
+.professional-page .page>h1,.collage-page .page>h1{margin:0 0 10px;font-family:Arial,sans-serif;font-size:clamp(48px,8vw,120px);font-weight:700;line-height:.84;letter-spacing:-.06em;text-transform:uppercase}
+.collage-page .page>h1{white-space:nowrap}
+.image-letter{display:inline-block;background-color:var(--letter-backdrop,#168aad);background-position:center;background-size:cover;background-blend-mode:multiply;background-clip:text;-webkit-background-clip:text;transition:color .2s ease}
+.image-letter:hover{color:transparent;-webkit-text-fill-color:transparent;-webkit-text-stroke:1px rgba(0,0,0,.18)}
 .professional-page .page>.byline{max-width:680px;margin:0 0 clamp(38px,6vw,80px);font-size:14px;line-height:1.5}
 .professional-page .page>section{counter-reset:project-index}
 .professional-page .case-study{counter-increment:project-index;position:relative;grid-template-columns:1fr;gap:0;margin:0 0 clamp(18px,3vw,42px);border:1px solid var(--text);background:var(--bg)}
