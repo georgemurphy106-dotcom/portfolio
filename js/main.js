@@ -1,16 +1,16 @@
 // Minimal JS for navigation transitions and simple gallery handling
 document.addEventListener('DOMContentLoaded', ()=>{
-  // simple page transition: fade out then navigate
+  // Landing-page exit transition. Links remain functional without JavaScript.
   document.querySelectorAll('[data-nav]').forEach(el=>{
     el.addEventListener('click', (e)=>{
-      const href = el.getAttribute('data-href');
-      if(!href) return;
-      if(matchMedia('(prefers-reduced-motion: reduce)').matches){
-        window.location = href; return;
-      }
-      document.documentElement.style.transition = 'opacity .28s ease';
-      document.documentElement.style.opacity = '0';
-      setTimeout(()=> window.location = href, 260);
+      const href = el.getAttribute('href');
+      const isModifiedClick = e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0;
+      if(!href || isModifiedClick || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      e.preventDefault();
+      el.classList.add('is-selected');
+      document.body.classList.add('is-leaving');
+      setTimeout(()=> window.location.href = href, 380);
     })
   })
 
@@ -59,7 +59,4 @@ document.addEventListener('DOMContentLoaded', ()=>{
     // reduced motion: ensure content visible
     document.querySelectorAll('.case-study, .piece, .project').forEach(el=> el.classList.add('in'))
   }
-
-  // reveal animations
-  requestAnimationFrame(()=>document.documentElement.style.opacity='1')
 })
