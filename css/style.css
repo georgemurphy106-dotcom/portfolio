@@ -7,8 +7,11 @@
   --max-width: 1100px;
 }
 *{box-sizing:border-box}
-html,body{min-height:100%}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter, "Helvetica Neue", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;}
+html{min-height:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:hidden}
+body{min-height:100%;margin:0;background:var(--bg);color:var(--text);font-family:Inter, "Helvetica Neue", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;overflow-x:hidden}
+img{max-width:100%}
+a{overflow-wrap:anywhere}
+button,a{-webkit-tap-highlight-color:transparent}
 .container{max-width:var(--max-width);margin:0 auto;padding:56px 28px}
 
 /* Landing */
@@ -59,6 +62,14 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Inter, "Helveti
 .top-nav a:hover,.top-nav a:focus-visible{color:var(--bg);background:var(--text)}
 .top-nav a:focus-visible{outline:3px solid var(--text);outline-offset:3px}
 
+/* Compact header used by individual case-study pages */
+.site-header:not(.section-header)>div{display:flex;justify-content:space-between;align-items:center;gap:24px}
+.site-header:not(.section-header) .brand{font-family:Arial,sans-serif;font-size:clamp(24px,4vw,42px);font-weight:700;letter-spacing:-.04em;text-transform:uppercase}
+.site-header:not(.section-header) .top-nav{display:flex;border:1px solid var(--text);margin-left:auto}
+.site-header:not(.section-header) .top-nav a{padding:10px 14px;color:var(--text);font:700 11px/1 Arial,sans-serif;letter-spacing:.055em;text-decoration:none;text-transform:uppercase}
+.hero-media img{display:block}
+.page article{line-height:1.6}
+
 /* Projects */
 .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:34px}
 .project{border-left:4px solid var(--accent);padding:18px;background:#fff}
@@ -96,11 +107,12 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Inter, "Helveti
 .professional-page .case-study{counter-increment:project-index;position:relative;grid-template-columns:1fr;gap:0;margin:0 0 clamp(18px,3vw,42px);border:1px solid var(--text);background:var(--bg)}
 .professional-page .case-study:nth-child(even){margin-left:clamp(0px,5vw,76px)}
 .professional-page .case-study:nth-child(odd){margin-right:clamp(0px,5vw,76px)}
-.professional-page .case-study::before{content:"0" counter(project-index);position:absolute;top:12px;right:14px;z-index:2;font:700 11px/1 Arial,sans-serif;letter-spacing:.08em}
+.professional-page .case-study::before{content:none}
 .professional-page .case-media{min-height:0;border:0;border-bottom:1px solid var(--text);overflow:hidden;display:block;background:var(--bg)}
 .professional-page .case-media a{display:block;width:100%}
 .professional-page .case-study .case-media img{width:100%;height:auto;min-height:0;object-fit:contain;border:0;vertical-align:middle}
 .professional-page .case-content{padding:clamp(26px,4vw,62px)!important;display:flex;flex-direction:column;justify-content:center;min-height:clamp(340px,42vw,620px)}
+.professional-page .case-content::before{content:"0" counter(project-index);align-self:flex-end;order:-1;margin:0 0 clamp(22px,3vw,38px);font:700 11px/1 Arial,sans-serif;letter-spacing:.08em}
 .professional-page .case-content h2{max-width:8ch;margin:0 0 clamp(22px,3vw,38px);font-family:Arial,sans-serif;font-size:clamp(42px,5.5vw,84px);font-weight:700;line-height:.84;letter-spacing:-.06em;text-transform:uppercase}
 .professional-page .case-meta{padding-top:10px;border-top:1px solid var(--text);font:700 10px/1.5 Arial,sans-serif;letter-spacing:.045em;text-transform:uppercase}
 .professional-page .case-content p{font-size:14px;line-height:1.55}
@@ -204,25 +216,57 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Inter, "Helveti
 
 /* Responsive tweaks */
 @media (max-width:640px){
-  .container{padding:28px 18px}
+  .container{padding:28px 16px}
+  .page{min-height:0;padding-top:38px;padding-bottom:56px}
   .section-page .section-header.container{padding:0;margin:6px}
-  .section-page .section-header>div{min-height:0;padding:15px;display:block!important}
-  .section-page .section-header .brand{font-size:clamp(42px,13vw,68px);line-height:.82;margin-bottom:18px}
+  .section-page .section-header>div{min-height:0;padding:14px;display:block!important}
+  .section-page .section-header .brand{font-size:clamp(36px,12vw,58px);line-height:.84;margin-bottom:16px}
   .section-page .section-header .top-nav{width:100%}
-  .section-page .section-header .top-nav a{flex:1;padding:10px 6px;text-align:center}
+  .section-page .section-header .top-nav a{display:flex;flex:1;min-height:44px;padding:8px 5px;align-items:center;justify-content:center;text-align:center;font-size:10px}
   .landing-page{overflow:auto}
-  .landing{min-height:100vh;min-height:100dvh;height:auto}
-  .landing-page .name{font-size:clamp(62px,24vw,112px);line-height:.76;padding:clamp(28px,7vh,64px) 8px}
+  .landing{min-height:100vh;min-height:100svh;height:auto;padding:6px}
+  .landing-page .name{font-size:clamp(54px,23vw,104px);line-height:.78;padding:clamp(24px,6vh,52px) 7px}
   .nav-grid{grid-template-columns:1fr}
-  .nav-link{min-height:70px;padding:13px 15px;align-items:center}
+  .nav-link{min-height:64px;padding:12px 14px;align-items:center}
   .nav-link+.nav-link{border-left:0;border-top:1px solid var(--text)}
-  .professional-page .case-badges{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;border:1px solid var(--text)}
-  .professional-page .case-badges .badge{border:0;text-align:center}
-  .professional-page .case-badges .badge+.badge{border-left:0}
-  .professional-page .case-badges .badge:nth-child(odd){border-right:1px solid var(--text)}
-  .professional-page .case-badges .badge:nth-child(-n+2){border-bottom:1px solid var(--text)}
+  .professional-page .page,.collage-page .page{padding:38px 10px 60px}
+  .professional-page .page>h1,.collage-page .page>h1{font-size:clamp(42px,15vw,68px);white-space:normal;overflow-wrap:normal}
+  .professional-page .page>.byline{margin-bottom:32px}
+  .professional-page .case-content{padding:24px 18px!important}
+  .professional-page .compact-case .case-content{padding:24px 18px!important}
+  .professional-page .case-content h2,.professional-page .compact-case .case-content h2{max-width:100%;font-size:clamp(34px,12vw,52px);overflow-wrap:anywhere}
+  .professional-page .case-meta{font-size:9px;line-height:1.65;overflow-wrap:anywhere}
+  .professional-page .case-content p{font-size:15px}
+  .professional-page .playlist-grid{margin-top:18px}
+  .professional-page .case-badges{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;gap:1px;border:1px solid var(--text);background:var(--text)}
+  .professional-page .case-badges .badge{display:flex;min-height:46px;padding:8px;align-items:center;justify-content:center;border:0;background:var(--bg);text-align:center;line-height:1.25}
   .projects{grid-template-columns:1fr}
-  .gallery{grid-template-columns:repeat(2,1fr)}
+  .gallery{grid-template-columns:1fr;gap:34px}
+  .piece--landscape{grid-column:auto}
+  .piece .meta{margin-top:9px}
+  .js-open{touch-action:manipulation}
+  .lightbox{padding:54px 12px 12px}
+  .lightbox img{max-width:100%;max-height:calc(100dvh - 78px);object-fit:contain}
+  .lightbox .lightbox-close{top:10px;right:10px;min-width:44px;min-height:44px;font-size:18px}
+  .about-grid table{table-layout:fixed;font-size:14px}
+  .about-grid td{overflow-wrap:anywhere}
+  .site-header:not(.section-header){padding-top:18px;padding-bottom:18px}
+  .site-header:not(.section-header)>div{gap:12px;align-items:flex-start;flex-direction:column}
+  .site-header:not(.section-header) .brand{font-size:30px}
+  .site-header:not(.section-header) .top-nav{width:100%;margin-left:0}
+  .site-header:not(.section-header) .top-nav a{display:flex;flex:1;min-height:44px;align-items:center;justify-content:center}
+  body:not(.section-page):not(.landing-page) .page{padding-top:10px}
+  body:not(.section-page):not(.landing-page) .page h1{font-size:clamp(36px,12vw,52px);line-height:1;overflow-wrap:anywhere}
+  body:not(.section-page):not(.landing-page) .hero-media{height:auto!important;overflow:visible}
+  body:not(.section-page):not(.landing-page) .hero-media img{width:100%!important;height:auto!important;transform:none!important}
+}
+
+@media (max-width:380px){
+  .section-page .section-header .top-nav{flex-wrap:wrap}
+  .section-page .section-header .top-nav a{flex-basis:100%}
+  .section-page .top-nav a+a{border-left:0;border-top:1px solid var(--text)}
+  .landing-page .name{font-size:22vw}
+  .professional-page .case-badges{grid-template-columns:1fr}
 }
 
 @media (prefers-reduced-motion:reduce){
