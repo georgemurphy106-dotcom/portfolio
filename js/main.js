@@ -12,6 +12,86 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }));
   });
 
+  // Unlock audio on the visitor's first interaction, then let each homepage
+  // or header letter ring with its own warm steel-drum note on hover.
+  const toneLetters = Array.from(document.querySelectorAll('.landing-page .name .letter, .site-header .brand .color-letter'));
+  if(toneLetters.length){
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const notes = [130.81,146.83,164.81,196,220,174.61,196,220,261.63,293.66,246.94,196];
+    let audioContext;
+    let ambienceStarted = false;
+    let ambienceAudio;
+
+    const unlockAudio = ()=>{
+      if(!AudioContext) return Promise.resolve();
+      audioContext ||= new AudioContext();
+      return audioContext.state === 'suspended' ? audioContext.resume() : Promise.resolve();
+    };
+
+    const startAmbience = ()=>{
+      if(!audioContext || ambienceStarted) return;
+      ambienceStarted = true;
+
+      const script = document.querySelector('script[src*="js/main.js"]');
+      const audioRoot = new URL('../assets/audio/',script.src);
+      let filename = 'eggs.mp3';
+      if(document.body.classList.contains('professional-page') || location.pathname.includes('/professional/')) filename = 'city-sound.mp3';
+      else if(document.body.classList.contains('collage-page')) filename = 'forest-sound.mp3';
+      else if(document.body.classList.contains('about-page')) filename = 'dinner-ambiance.mp3';
+
+      ambienceAudio = new Audio(new URL(filename,audioRoot).href);
+      ambienceAudio.loop = true;
+      ambienceAudio.volume = .18;
+      ambienceAudio.play().catch(()=>{ ambienceStarted = false; });
+    };
+
+    const playChime = index=>{
+      if(!audioContext || audioContext.state !== 'running') return;
+      const now = audioContext.currentTime;
+      const master = audioContext.createGain();
+      const fundamentalGain = audioContext.createGain();
+      const overtoneGain = audioContext.createGain();
+      const warmth = audioContext.createBiquadFilter();
+      const fundamental = audioContext.createOscillator();
+      const overtone = audioContext.createOscillator();
+
+      fundamental.type = 'triangle';
+      fundamental.frequency.setValueAtTime(notes[index % notes.length], now);
+      overtone.type = 'sine';
+      overtone.frequency.setValueAtTime(notes[index % notes.length] * 2.02, now);
+      fundamental.frequency.exponentialRampToValueAtTime(notes[index % notes.length] * .992, now + .22);
+      warmth.type = 'lowpass';
+      warmth.frequency.setValueAtTime(1050, now);
+      warmth.Q.setValueAtTime(.7, now);
+      fundamentalGain.gain.setValueAtTime(1, now);
+      overtoneGain.gain.setValueAtTime(.16, now);
+      master.gain.setValueAtTime(.0001, now);
+      master.gain.exponentialRampToValueAtTime(.07, now + .028);
+      master.gain.exponentialRampToValueAtTime(.022, now + .38);
+      master.gain.exponentialRampToValueAtTime(.0001, now + 1.65);
+
+      fundamental.connect(fundamentalGain).connect(warmth);
+      overtone.connect(overtoneGain).connect(warmth);
+      warmth.connect(master).connect(audioContext.destination);
+      fundamental.start(now);
+      overtone.start(now);
+      fundamental.stop(now + 1.7);
+      overtone.stop(now + 1.7);
+    };
+
+    document.addEventListener('pointerdown', event=>{
+      const letter = event.target.closest('.landing-page .name .letter, .site-header .brand .color-letter');
+      unlockAudio().then(()=>{
+        startAmbience();
+        if(letter) playChime(toneLetters.indexOf(letter));
+      });
+    },{capture:true,once:true});
+
+    toneLetters.forEach((letter,index)=>{
+      letter.addEventListener('mouseenter',()=> playChime(index));
+    });
+  }
+
   // Fill each letter of the Collages title with artwork from the gallery on hover.
   const collageTitle = document.querySelector('.collage-page .page > h1');
   if(collageTitle){
